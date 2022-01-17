@@ -1,0 +1,127 @@
+{
+  "groups": [
+    {
+      "name": "role",
+      "type": "com.xch.boots.pojo.Role",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "user",
+      "type": "com.xch.boots.pojo.User",
+      "sourceType": "com.xch.boots.pojo.User"
+    }
+  ],
+  "properties": [
+    {
+      "name": "role.created-by",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "role.creation-date",
+      "type": "java.util.Date",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "role.id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "role.modify-by",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "role.modify-date",
+      "type": "java.util.Date",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "role.role-code",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "role.role-name",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.Role"
+    },
+    {
+      "name": "user.address",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.birthday",
+      "type": "java.util.Date",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.created-by",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.creation-date",
+      "type": "java.util.Date",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.gender",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.modify-by",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.modify-date",
+      "type": "java.util.Date",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.phone",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.user-code",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.user-name",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.user-password",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.user-role",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xch.boots.pojo.User"
+    },
+    {
+      "name": "user.user-role-name",
+      "type": "java.lang.String",
+      "sourceType": "com.xch.boots.pojo.User"
+    }
+  ],
+  "hints": []
+}

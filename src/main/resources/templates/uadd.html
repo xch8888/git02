@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="webjars/jquery/3.5.1/jquery.min.js"> </script>
+    <script src="../layui/layui.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<form>
+    <div>
+        <div>
+            用户编码:<input type="text" id="userCode" name="userCode"
+                        autocomplete="off" >
+        </div>
+    </div>
+    <div>
+        <div>
+            用户名称:<input type="text" id="userName" name="userName"
+                        autocomplete="off">
+        </div>
+    </div>
+    <div>
+        <div>
+            用户密码:<input type="text" id="userPassword" name="userPassword"
+                        autocomplete="off">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label >用户性别：</label>
+            <select name="gender" id="gender">
+                <option value="2" selected="selected">男</option>
+                <option value="1">女</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-input-inline">
+        时间选择器:<input class="layui-input" id="test1" name="birthday" type="text" >
+    </div>
+    <div>
+        <div>
+            电话:<input type="text" id="phone" name="phone" autocomplete="off">
+        </div>
+    </div>
+    <div>
+        <label >用户角色：</label>
+        <!-- 列出所有的角色分类 -->
+        <select name="userRole" id="userRole">
+            <option value="1">系统管理员</option>
+            <option value="2">经理</option>
+            <option value="3" selected="selected">普通用户</option>
+        </select>
+        <font color="red"></font>
+    </div>
+
+    <div>
+        <button type="button" id="tj">添加</button>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function(){
+        $("#tj").click(function(){
+            var userCode = $("#userCode").val();
+            var userName = $("#userName").val();
+            var userPassword = $("#userPassword").val();
+            var gender= $("#gender").val();
+            var birthday = $("#test1").val();
+            var phone = $("#phone").val();
+            var address = $("#address").val();
+            //发送请求
+            $.ajax({
+                "url": "/addUser",
+                "type": "POST",
+                "data": {
+                    "userCode": userCode, "userName": userName,
+                    "userPassword": userPassword,"gender":gender,
+                    "birthday":birthday,"phone": phone,
+                    "address": address
+                },
+                "dataType": "json",
+                "success": function (res) {
+                    if (res.flag) {
+                        alert("添加成功")
+                        window.location.href = '/userList';
+                    } else {
+                        alert("添加失败")
+                    }
+                },
+                "error": function () {
+                    alert("错误");
+                }
+            });
+        })
+    })
+
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+         //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+    });
+</script>
+</body>
+</html>

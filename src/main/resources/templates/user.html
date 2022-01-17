@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="x-admin-sm"  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="/lay/layui.js" charset="utf-8"></script>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+		<link rel="stylesheet" href="res/css/amazeui.min.css" />
+		<link rel="stylesheet" href="res/css/admin.css" />
+		<link rel="stylesheet" href="/css/font.css">
+		<link rel="stylesheet" href="/css/index.css">
+	</head>
+
+	<body>
+		<div class="admin-content-body">
+			<div class="am-cf am-padding am-padding-bottom-0">
+				<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理</strong><small></small></div>
+			</div>
+
+			<hr>
+
+			<div class="am-g">
+				<div class="am-u-sm-12 am-u-md-6">
+					<div class="am-btn-toolbar">
+						<div class="am-btn-group am-btn-group-xs">
+							<a th:href="@{/uadd}"><button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button></a>
+						</div>
+					</div>
+				</div>
+				<div class="am-u-sm-12 am-u-md-3">
+
+				</div>
+				<div class="am-u-sm-12 am-u-md-3">
+					<div class="am-input-group am-input-group-sm">
+						<input name="userName" type="text" class="am-form-field">
+						<span class="am-input-group-btn">
+            <button class="am-btn am-btn-default" type="button">搜索</button>
+          </span>
+					</div>
+				</div>
+			</div>
+			<div class="am-g">
+				<div class="am-u-sm-12">
+					<form class="am-form">
+						<table class="am-table am-table-striped am-table-hover table-main">
+							<thead>
+								<tr>
+									<th class="table-check"><input type="checkbox"></th>
+									<th class="table-id">ID</th>
+									<th class="table-title">用户编码</th>
+									<th class="table-type">用户名称</th>
+									<th class="table-author am-hide-sm-only">性别</th>
+									<th class="table-type">出生日期</th>
+									<th class="table-type">电话</th>
+									<th class="table-type">用户角色</th>
+									<th class="table-set">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+<!--								<tr>-->
+<!--									<td><input type="checkbox"></td>-->
+<!--									<td>1</td>-->
+<!--									<td>-->
+<!--										<a href="#">张三</a>-->
+<!--									</td>-->
+<!--									<td>admin</td>-->
+<!--									<td class="am-hide-sm-only">男</td>-->
+<!--									<td>-->
+<!--										<div class="am-btn-toolbar">-->
+<!--											<div class="am-btn-group am-btn-group-xs">-->
+<!--												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>-->
+<!--												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</td>-->
+<!--								</tr>-->
+
+<!--									<td>-->
+<!--										<div class="am-btn-toolbar">-->
+<!--											<div class="am-btn-group am-btn-group-xs">-->
+<!--												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>-->
+<!--												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</td>-->
+<!--								</tr>-->
+
+							</tbody>
+						</table>
+						<!--分页部分-->
+						<div id="jg" class="layui-card-body "></div>
+<!--						<div class="am-cf">-->
+<!--							<div class="am-fr">-->
+<!--								<ul class="am-pagination">-->
+<!--									<li class="am-disabled"  name="beforPage">-->
+<!--										<a th:href="@{/testPageHelper1}">«</a>-->
+<!--									</li>-->
+<!--									<li class="am-active"  name="beforPage">-->
+<!--										<a th:href="@{/testPageHelper1}">1</a>-->
+<!--									</li>-->
+<!--									<li  name="beforPage">-->
+<!--										<a th:href="@{/testPageHelper1}">2</a>-->
+<!--									</li>-->
+<!--									<li  name="beforPage">-->
+<!--										<a th:href="@{/testPageHelper1}">3</a>-->
+<!--									</li>-->
+<!--									<li  name="beforPage">-->
+<!--										<a th:href="@{/testPageHelper1}">4</a>-->
+<!--									</li>-->
+<!--									<li name="beforPage">-->
+<!--										<a th:href="@{/testPageHelper1}">5</a>-->
+<!--									</li>-->
+<!--									<li name="beforPage">-->
+<!--										<a th:href="@{/testPageHelper1}">»</a>-->
+<!--									</li>-->
+<!--								</ul>-->
+<!--							</div>-->
+<!--						</div>-->
+						<hr>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="webjars/jquery/3.5.1/jquery.min.js"> </script>
+		<script type="text/javascript">
+			layui.use(['laydate','form'], function(){
+				var laydate = layui.laydate;
+				var  form = layui.form;
+
+
+				// 监听全选
+				form.on('checkbox(checkall)', function(data){
+
+					if(data.elem.checked){
+						$('tbody input').prop('checked',true);
+					}else{
+						$('tbody input').prop('checked',false);
+					}
+					form.render('checkbox');
+				});
+
+				//执行一个laydate实例
+				laydate.render({
+					elem: '#start' //指定元素
+				});
+
+				//执行一个laydate实例
+				laydate.render({
+					elem: '#end' //指定元素
+				});
+
+
+			});
+
+
+			/*用户-删除*/
+			function member_del(obj, id) {
+				layer.confirm('确认要删除吗？', function(index) {
+					alert(id);
+					//发异步删除数据
+					$.ajax({
+						url : "/delUser",
+						type : "GET",
+						data : {
+							"id" : id
+						},
+						dataType : "json",
+						success : function(msg) {
+							if(msg.flag) {
+								$(obj).parents("tr").remove();
+								layer.msg('已删除!', {
+									icon: 1,
+									time: 1000
+								});
+							}
+						},
+						error : function() {
+							//alert("请求失败，请与客服联系");
+						}
+
+					});
+				});
+			}
+
+			$(function(){
+				//显示数据
+				showData();
+				//显示页码
+				showPage();
+			})
+			let pageNum = 1;//设置首页页码
+			let pageSize = 5;//设置每页显示的条数
+			let totalCount;//总条数
+			let totalPage;//总共多少页
+			var sex;	//性别
+			var role; 	//角色
+			//显示数据
+			function showData(){
+				$.ajax({
+					"url":"/testPageHelper1",
+					"type":"Get",
+					// "async":false,
+					"data":{"currentPage":pageNum,"pageSize":pageSize},
+					"dataType":"json",
+					"success":function(res){
+						//$("#list").html(res);
+						totalCount = res.total;//总记录数
+						totalPage = res.pages;//总页数
+						let list = res.list;//每页显示的列表
+						let html='';
+						for(let i=0;i<list.length;i++){
+							html+='<tr>';
+							html+='"<td><input type="checkbox" name="id"  value="'+list[i].id +'  lay-skin="primary">';
+							html+='</td>';
+							html+='<td class="table-id">'+list[i].id;
+							html+='</td>';
+							html+='<td  class="table-title">'+list[i].userCode;
+							html+='</td>';
+							html+='<td class="table-type">'+list[i].userName;
+							html+='</td>';
+							if (list[i].gender==1){
+								sex="女";
+							}else if(list[i].gender==2){
+								sex="男";
+							}
+							html+='<td  class="table-author am-hide-sm-only">'+sex;
+							html+='</td>';
+							html+='<td  class="table-type">'+list[i].birthday;
+							html+='</td>';
+							html+='<td class="table-type">'+list[i].phone;
+							html+='</td>';
+							if(list[i].userRole==1){
+								role="系统管理员";
+							}else if(list[i].userRole==2){
+								role="经理";
+							}else if(list[i].userRole==3){
+								role="普通管理员";
+							}
+							html+='<td  class="table-type">'+role;
+							html+='</td>';
+							html+='<td class="am-cf">';
+							html+='<a title="编辑" onclick="xadmin.open(\'编辑\',\'/upduser?a=1&id='+list[i].id+'\')"';
+							html+='href="javascript:;"> <i class="layui-icon">&#xe642;</i>';
+							html+='</a> <a title="删除" onclick="member_del(this,'+list[i].id+')"';
+							html+='href="javascript:;"> <i class="layui-icon">&#xe640;</i>';
+							html+='</a></td>';
+							html+='<tr>';
+
+						}
+						$("tbody").empty().append(html);
+					},
+					"error":function(){
+						alert("请求失败");
+					}
+				});
+			}
+
+			//显示页码
+			function showPage(){
+				layui.use(['laypage'],function(){
+					var laypage = layui.laypage;
+					laypage.render({
+						elem:'jg'
+						,count:totalCount   //总数量
+						,curr:pageNum   //当前页码
+						,limit:pageSize   //页面尺寸
+						,layout: ['prev', 'page', 'next', 'skip','count','limit']
+						,jump:function (obj,first) {
+							pageNum = obj.curr;
+							pageSize = obj.limit;
+							//首次不执行，一定要加此判断，否则初使时会无限刷新
+							if(!first){
+								showData();
+							}
+						}
+					})
+				});
+			}
+
+		</script>
+	</body>
+</html>
